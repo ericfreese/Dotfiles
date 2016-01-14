@@ -12,6 +12,9 @@ function dotlify
   if [ $argv = "link" ]
     __dotlify_link
     return $status
+  else if [ $argv = "unlink" ]
+    __dotlify_unlink
+    return $status
   end
 
   for arg in $argv
@@ -72,6 +75,15 @@ function __dotlify_link
       printf "\t%slinking         $link%s\n" (set_color magenta) (set_color normal)
 
       ln -s "$DOTLIFY_PATH/$link" "$HOME/$link"
+    end
+  end < "$DOTLIFY_PATH/.dotlify-links"
+end
+
+function __dotlify_unlink
+  while read link
+    if [ -L "$HOME/$link" ]
+      printf "\tremoving link $link\n"
+      rm "$HOME/$link"
     end
   end < "$DOTLIFY_PATH/.dotlify-links"
 end
