@@ -1,0 +1,13 @@
+.bash_profile
+.bashrc
+.config/fish
+.gitconfig
+.gitignore
+.ruby-version
+.screenrc
+.slate
+.teamocil
+.tigrc
+.vimrc
+.weechat
+.zshrc

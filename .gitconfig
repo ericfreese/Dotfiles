@@ -1,0 +1,51 @@
+[user]
+	name = Eric Freese
+	email = ericdfreese@gmail.com
+[core]
+	editor = "subl -n -w"
+	quotepath = false
+	excludesfile = /Users/ericfreese/.gitignore
+[color]
+	ui = true
+[alias]
+	s = "status -s"
+	ss = "status"
+	c = "commit"
+	l = log -20 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches
+	ll = log -30 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches
+	lll = log -200 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches
+	r = reset
+	rs = reset --soft
+	b = branch
+	bb = branch -vv
+	co = checkout
+	ci = commit
+	cp = cherry-pick
+	rb = rebase
+	rbi = rebase -i
+	rbc = rebase --continue
+	rba = rebase --abort
+	rrr = rerere
+	m = merge
+	ma = merge --abort
+	mt = mergetool
+	a = add
+	d = diff --word-diff=color
+	dc = diff --word-diff=color --cached
+	rpd = remote prune --dry-run
+	rp = remote prune
+[credential]
+	helper = osxkeychain
+[github]
+	user = ericfreese
+[rerere]
+	enabled = true
+[merge]
+	tool = p4merge
+[mergetool "p4merge"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+	prompt = false
+	keepTemporaries = false
+	trustExitCode = true
+[mergetool]
+	keepBackup = false

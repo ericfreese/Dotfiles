@@ -1,0 +1,42 @@
+
+set main-view = line-number:no,interval=5 id:yes date:default author:abbreviated commit-title:yes,graph,refs,overflow=no
+
+##
+# Bindings
+#
+
+bind status u status-update           # Stage/unstage changes in file
+bind status ! status-revert           # Revert changes in file
+bind status M status-merge            # Open git-mergetool(1)
+bind status C ?git commit             # Commit
+bind status A ?git commit --amend     # Amend commit
+bind status D ?rm %(file)             # Delete file
+
+##
+# Colors
+#
+
+color cursor          white color238 bold
+
+color "commit "       default default
+color "Refs: "        default default
+color "Author: "      default default
+color "AuthorDate: "  default default
+color "Commit: "      default default
+color "CommitDate: "  default default
+
+color "diff --"       blue default bold underline
+color "--- "          default default
+color "+++ "          default default
+color "index "        default default
+color "@@"            cyan default
+
+color main-ref        yellow default
+color main-head       yellow default bold underline
+color diff-stat       blue default
+
+color stat-none       default default
+color stat-staged     green default
+color stat-unstaged   red default
+color stat-untracked  red default
+
