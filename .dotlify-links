@@ -1,6 +1,7 @@
 .bash_profile
 .bashrc
-.config/fish
+.config/fish/functions
+.config/fish/config.fish
 .gitconfig
 .gitignore
 .ruby-version
