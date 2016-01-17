@@ -28,10 +28,14 @@ source /usr/local/etc/bash_completion.d/git-completion.bash
 export NODE_PATH=/usr/local/share/npm/lib/node_modules
 
 # Prioritize /usr/local/bin
-PATH="/usr/local/bin:/usr/local/share/npm/bin:$PATH"
+# PATH="/usr/local/bin:/usr/local/share/npm/bin:$PATH"
 
 # To enable rbenv shims and autocompletion
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
+
+# To enable chruby
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 
 # Install homebrew cask opts to /Applications instead of ~/Applications
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"

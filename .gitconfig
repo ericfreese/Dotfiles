@@ -49,3 +49,7 @@
 	trustExitCode = true
 [mergetool]
 	keepBackup = false
+[color "status"]
+	changed = cyan
+	untracked = red
+	added = green

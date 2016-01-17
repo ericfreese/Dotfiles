@@ -15,17 +15,18 @@ fundle init
 set -x HOMEBREW_CASK_OPTS "--appdir=/Applications"
 
 ##
+# Initialize NVM
+#
+
+fenv source ~/.nvm/nvm.sh > /dev/null
+
+##
 # Initialize chruby
 #
 
 source /usr/local/share/chruby/chruby.fish
 source /usr/local/share/chruby/auto.fish
-
-##
-# Initialize NVM
-#
-
-fenv source ~/.nvm/nvm.sh > /dev/null
+chruby 2.3.0
 
 ##
 # Aliases

@@ -8,18 +8,28 @@ set refresh-interval = 2
 # Bindings
 #
 
+bind generic <PgDown> move-half-page-down
+bind generic <PgUp> move-half-page-up
+bind generic <C-j> scroll-line-down
+bind generic <C-k> scroll-line-up
+bind generic <C-r> refresh
+
 bind status u status-update           # Stage/unstage changes in file
-bind status ! status-revert           # Revert changes in file
+bind status ! none
+bind status R status-revert           # Revert changes in file
 bind status M status-merge            # Open git-mergetool(1)
-bind status C ?git commit             # Commit
-bind status A ?git commit --amend     # Amend commit
-bind status D ?rm %(file)             # Delete file
+bind status C @git commit             # Commit
+bind status A @?git commit --amend    # Amend commit
+bind status D @?rm %(file)            # Delete file
 
 ##
 # Colors
 #
 
-color cursor          white color238 bold
+color cursor          white color236 bold
+
+color title-blur      white default
+color title-focus     white color236 bold
 
 color "commit "       default default
 color "Refs: "        default default
@@ -37,9 +47,8 @@ color "@@"            cyan default
 color main-ref        yellow default
 color main-head       yellow default bold underline
 color diff-stat       blue default
-
+color section         blue  default
 color stat-none       default default
 color stat-staged     green default
 color stat-unstaged   red default
 color stat-untracked  red default
-
