@@ -11,4 +11,12 @@
 .teamocil
 .tigrc
 .vimrc
+.zsh/aliases.zsh
+.zsh/antigen.zsh
+.zsh/autosuggestions.zsh
+.zsh/bindings.zsh
+.zsh/chruby.zsh
+.zsh/homebrew.zsh
+.zsh/nvm.zsh
+.zsh/prompt.zsh
 .zshrc

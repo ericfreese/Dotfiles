@@ -41,6 +41,7 @@ alias be='bundle exec'
 alias bi='bundle install'
 alias brc='be rails c'
 alias brs='be rails s'
+alias brdc='be rake db:create'
 alias brdm='be rake db:migrate'
 alias brt='be rake test'
 alias bfs='be foreman start'
@@ -70,14 +71,20 @@ set __fish_git_prompt_char_cleanstate         '✔'
 set __fish_git_prompt_char_stagedstate        '●'
 set __fish_git_prompt_char_dirtystate         '✻'
 set __fish_git_prompt_char_untrackedfiles     '+'
-set __fish_git_prompt_char_invalidstate       '✗'
+set __fish_git_prompt_char_invalidstate       '×'
 set __fish_git_prompt_char_stashstate         '$'
 
 set __fish_git_prompt_char_upstream_prefix    ' '
-set __fish_git_prompt_char_upstream_ahead     '▲'
-set __fish_git_prompt_char_upstream_behind    '▼'
+set __fish_git_prompt_char_upstream_ahead     '↑'
+set __fish_git_prompt_char_upstream_behind    '↓'
 set __fish_git_prompt_char_upstream_equal     ''
 set __fish_git_prompt_char_upstream_diverged  ''
+
+##
+# Fish colors
+#
+
+set fish_color_search_match --background=161616
 
 ##
 # Dotfiles config
