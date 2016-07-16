@@ -37,8 +37,12 @@
 	ma = merge --abort
 	mt = mergetool
 	a = add
-	d = diff --word-diff=color
-	dc = diff --word-diff=color --cached
+	d = diff --color-words=.
+	dw = diff --color-words=[a-zA-Z]+
+	dl = diff --color
+	dc = diff --cached --color-words=.
+	dcw = diff --cached --color-words=[a-zA-Z]+
+	dcl = diff --cached --color
 	rpd = remote prune --dry-run
 	rp = remote prune
 [credential]
