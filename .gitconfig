@@ -21,6 +21,8 @@
 	r = reset
 	rs = reset --soft
 	b = branch
+	ba = branch -a
+	br = branch -r
 	bb = branch -vv
 	co = checkout
 	ci = commit
