@@ -1,8 +1,11 @@
 
 set main-view = line-number:no,interval=5 id:yes date:default author:abbreviated commit-title:yes,graph,refs,overflow=no
 
-set refresh-mode = periodic
-set refresh-interval = 2
+# Refresh is currently broken (see https://github.com/jonas/tig/issues/430)
+# Having this enabled also sometimes closes the stage view when staging/unchanging stages
+# See https://github.com/jonas/tig/issues/482
+# set refresh-mode = periodic
+# set refresh-interval = 2
 
 ##
 # Bindings
