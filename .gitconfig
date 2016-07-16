@@ -10,6 +10,9 @@
 [alias]
 	s = "status -s"
 	ss = "status"
+	sh = "stash"
+	sc = "stash --keep-index"
+	sp = "stash pop"
 	c = "commit"
 	l = log -20 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches
 	ll = log -30 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches
