@@ -53,3 +53,5 @@
 	changed = cyan
 	untracked = red
 	added = green
+[rebase]
+	autosquash = true
