@@ -38,28 +38,28 @@ _prompt() {
   local last_status=$?
 
   # Working directory
-  local _cwd="%{$fg[blue]%}`_abbreviated_cwd`%{$reset_color%}"
+  local abbreviated_cwd="%{$fg[blue]%}$(_abbreviated_cwd)%{$reset_color%}"
 
   # Git status
-  local _git_status=`_git_status`
+  local git_status=$(_git_status)
 
   # Arrow
-  local _arrow
+  local arrow
   if [ $last_status -eq 0 ]; then
-    _arrow="%{$FG[247]%}❯%{$reset_color%}"
+    arrow="%{$FG[008]%}❯%{$reset_color%}"
   else
-    _arrow="%{$fg[red]%}❯%{$reset_color%}"
+    arrow="%{$fg[red]%}❯%{$reset_color%}"
   fi
 
   local _items=()
-  _items+=("$_cwd")
-  [ -n "$_git_status" ] && _items+=("$_git_status")
-  _items+=("$_arrow")
+  _items+=("$abbreviated_cwd")
+  [ -n "$git_status" ] && _items+=("$git_status")
+  _items+=("$arrow")
 
   echo " $_items "
 }
 
-ZSH_THEME_GIT_PROMPT_BRANCH="%{$FG[247]%}"
+ZSH_THEME_GIT_PROMPT_BRANCH="%{$FG[008]%}"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}%{●%G%}"
 ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[cyan]%}%{✻%G%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[red]%}%{+%G%}"
