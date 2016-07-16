@@ -64,5 +64,10 @@
 	changed = cyan
 	untracked = red
 	added = green
+[color "diff"]
+	meta = blue bold
+	frag = cyan bold
+	old = red 9
+	new = green 10
 [rebase]
 	autosquash = true
