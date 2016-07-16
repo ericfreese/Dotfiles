@@ -1,6 +1,5 @@
 alias ls='ls -G'
 alias ll='ls -alG'
-alias hgr='h | grep'
 alias st='subl -n'
 alias tigs='tig status'
 
