@@ -17,13 +17,16 @@ bind generic <C-j> scroll-line-down
 bind generic <C-k> scroll-line-up
 bind generic <C-r> refresh
 
-bind status u status-update           # Stage/unstage changes in file
+bind main <C-F> @?git commit --fixup=%(commit)    # Fixup commit
+bind main R @?<git rebase --interactive %(commit) # Interactive rebase
+
+bind status u status-update                       # Stage/unstage changes in file
 bind status ! none
-bind status R status-revert           # Revert changes in file
-bind status M status-merge            # Open git-mergetool(1)
-bind status C @git commit             # Commit
-bind status A @?git commit --amend    # Amend commit
-bind status D @?rm %(file)            # Delete file
+bind status R status-revert                       # Revert changes in file
+bind status M status-merge                        # Open git-mergetool(1)
+bind status C @git commit                         # Commit
+bind status A @?git commit --amend                # Amend commit
+bind status D @?rm %(file)                        # Delete file
 
 ##
 # Colors
