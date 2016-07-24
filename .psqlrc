@@ -1,0 +1,11 @@
+\pset border 2
+\pset linestyle unicode
+
+\set HISTCONTROL ignoredups
+\set HISTFILE ~/.psql_history-:HOST-:DBNAME
+\set HISTSIZE 2000
+
+\setenv PAGER 'less -S'
+\setenv PSQL_EDITOR 'subl -n -w'
+
+\x off
