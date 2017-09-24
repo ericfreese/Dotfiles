@@ -1,6 +1,10 @@
 alias ll='ls -al'
 alias tigs='tig status'
 
+alias t='tree -L 1'
+alias tt='tree -L 2'
+alias ttt='tree -L 3'
+
 alias be='bundle exec'
 alias bi='bundle install'
 alias brc='be rails c'
