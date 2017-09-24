@@ -1,0 +1,88 @@
+[user]
+	name = Eric Freese
+	email = ericdfreese@gmail.com
+[core]
+	editor = "vim"
+	quotepath = false
+	excludesfile = /Users/ericfreese/.gitignore
+[color]
+	ui = always
+[alias]
+	s = "status -s"
+	ss = "status"
+	sh = "stash"
+	sc = "stash --keep-index"
+	sp = "stash pop"
+	c = "commit"
+	l = log -20 --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	ll = log -40 --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lll = log -60 --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	llll = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	f = fetch
+	r = reset
+	rs = reset --soft
+	b = branch
+	ba = branch -a
+	br = branch -r
+	bb = branch -vv
+	co = checkout
+	ci = commit
+	cp = cherry-pick
+	cpa = cherry-pick --abort
+	rb = rebase
+	rbi = rebase -i
+	rbc = rebase --continue
+	rba = rebase --abort
+	rrr = rerere
+	m = merge
+	ma = merge --abort
+	mt = mergetool
+	a = add
+	d = diff --color-words=.
+	dw = diff --color-words=[a-zA-Z]+
+	dl = diff --color
+	dc = diff --cached --color-words=.
+	dcw = diff --cached --color-words=[a-zA-Z]+
+	dcl = diff --cached --color
+	rpd = remote prune --dry-run
+	rp = remote prune
+#[credential]
+#	helper = osxkeychain
+[github]
+	user = ericfreese
+[rerere]
+	enabled = true
+#[merge]
+#	tool = p4merge
+#[mergetool "p4merge"]
+#	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+#	prompt = false
+#	keepTemporaries = false
+#	trustExitCode = true
+#[mergetool]
+#	keepBackup = false
+#[color "status"]
+#	changed = cyan
+#	untracked = red
+#	added = green
+#[color "diff"]
+#	meta = blue bold
+#	frag = cyan bold
+#	old = red 9
+#	new = green 10
+[push]
+	default = simple
+[diff]
+	compactionHeuristic = true
+#[difftool "sourcetree"]
+#	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+#	path =
+#[mergetool "sourcetree"]
+#	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.2.3/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+#	trustExitCode = true
+#[pager]
+#	log = diff-highlight | less
+#	show = diff-highlight | less
+#	diff = diff-highlight | less
+[rebase]
+	autosquash = true

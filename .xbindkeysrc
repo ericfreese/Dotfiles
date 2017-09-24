@@ -1,0 +1,38 @@
+
+##
+# Monitor backlight up/down
+#
+
+"xbacklight -inc 10 -time 0 -steps 1"
+  XF86MonBrightnessUp
+
+"xbacklight -dec 10 -time 0 -steps 1"
+  XF86MonBrightnessDown
+
+##
+# Toggle keyboard backlight
+#
+
+"grep -Fxq 0 /sys/class/leds/smc::kbd_backlight/brightness && kbdlight set 16 || kbdlight off"
+  XF86LaunchB
+
+##
+# Toggle Redshift
+#
+
+"[ $(systemctl --user is-active redshift.service) = active ] && systemctl --user start redshift.service || systemctl --user stop redshift.service"
+  XF86KbdBrightnessDown
+
+##
+# Sound controls
+#
+
+"amixer set Master toggle"
+  XF86AudioMute
+
+"amixer set Master 5%+"
+  XF86AudioRaiseVolume
+
+"amixer set Master 5%-"
+  XF86AudioLowerVolume
+

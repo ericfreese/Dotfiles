@@ -1,0 +1,55 @@
+Xft.dpi: 144
+
+! special
+*.foreground:   #e6e1dc
+*.background:   #2b2b2b
+*.cursorColor:  #e6e1dc
+
+! black
+*.color0:       #2b2b2b
+*.color8:       #8d99a6
+
+! red
+*.color1:       #da4939
+*.color9:       #f26d6d
+
+! green
+*.color2:       #a5c261
+*.color10:      #a5c261
+
+! yellow
+*.color3:       #ffc66d
+*.color11:      #ffc66d
+
+! blue
+*.color4:       #6d9cbe
+*.color12:      #6d9cbe
+
+! magenta
+*.color5:       #b6b3eb
+*.color13:      #b6b3eb
+
+! cyan
+*.color6:       #519f50
+*.color14:      #519f50
+
+! white
+*.color7:       #e6e1dc
+*.color15:      #f9f7f3
+
+! XTerm
+xterm.termName: xterm-256color
+xterm.vt100.locale: true
+xterm.vt100.metaSendsEscape: true
+xterm.vt100.translations: #override \n\
+	Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+	Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+xterm.vt100.faceName: DejaVu Sans Mono:size=10:antialias=true
+
+! URxvt
+URxvt.font: xft:DejaVu Sans Mono:size=10:antialias=true
+URxvt.letterSpace: -1
+URxvt.cursorBlink: 1
+URxvt.scrollBar: false
+URxvt.iso14755: false
+URxvt.iso14755_52: false

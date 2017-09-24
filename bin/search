@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+rat --cmd "ag -C -s --group --color '$*'" --mode 'search.results'
+
