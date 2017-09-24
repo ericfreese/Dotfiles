@@ -1,5 +1,4 @@
 alias ll='ls -al'
-alias st='subl -n'
 alias tigs='tig status'
 
 alias be='bundle exec'
