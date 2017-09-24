@@ -102,3 +102,15 @@ end
 #  bindkey space todo.item -- !td toggle %(todo.item)
 #  bindkey x     todo.item -- !td 
 #end
+
+##
+# Arch Packages
+#
+
+mode pac.list
+  annotate match pac.package -- pacman -Sl | cut -d' ' -f2 && pacman -Qm | cut -d' ' -f1
+
+  bindkey enter pac.package pac.list -- >pacman -Si %(pac.package)
+  bindkey i     pac.package pac.list -- >pacman -Qi %(pac.package)
+  bindkey t     pac.package pac.list -- >pactree -c -d 100 %(pac.package)
+end
