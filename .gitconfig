@@ -2,7 +2,7 @@
 	name = Eric Freese
 	email = ericdfreese@gmail.com
 [credential]
-	helper = cache
+	helper = cache --timeout=3600
 [core]
 	editor = "vim"
 	quotepath = false
