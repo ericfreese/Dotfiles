@@ -14,3 +14,4 @@ source "$ZSH_DIR/bindings.zsh"
 
 source "$ZSH_DIR/golang.zsh"
 source "$ZSH_DIR/less.zsh"
+source "$ZSH_DIR/ssh.zsh"
