@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+pacman -Qqe > ~/.pkglist && echo 'Wrote ~/.pkglist'
