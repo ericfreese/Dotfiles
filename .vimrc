@@ -1,7 +1,7 @@
 execute pathogen#infect()
 
-" For vim-gitgutter to update quickly
-set updatetime=500
+" Update git-gutter in realtime
+set updatetime=0
 
 set tabstop=2
 set shiftwidth=2
