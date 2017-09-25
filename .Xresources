@@ -11,11 +11,11 @@ Xft.dpi: 144
 
 ! red
 *.color1:       #da4939
-*.color9:       #f26d6d
+*.color9:       #402b2b
 
 ! green
 *.color2:       #a5c261
-*.color10:      #a5c261
+*.color10:      #2f381c
 
 ! yellow
 *.color3:       #ffc66d
@@ -30,8 +30,8 @@ Xft.dpi: 144
 *.color13:      #b6b3eb
 
 ! cyan
-*.color6:       #519f50
-*.color14:      #519f50
+*.color6:       #ff8700
+*.color14:      #ff8700
 
 ! white
 *.color7:       #e6e1dc
@@ -53,3 +53,4 @@ URxvt.cursorBlink: 1
 URxvt.scrollBar: false
 URxvt.iso14755: false
 URxvt.iso14755_52: false
+URxvt.intensityStyles: false
