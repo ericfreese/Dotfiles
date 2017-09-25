@@ -18,4 +18,5 @@ xset r rate 150 45
 
 systemctl --user start redshift
 systemctl --user start dunst
+xbanish &
 exec i3
