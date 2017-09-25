@@ -3,6 +3,7 @@ execute pathogen#infect()
 " Update git-gutter in realtime
 set updatetime=0
 
+" Whitespace
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
