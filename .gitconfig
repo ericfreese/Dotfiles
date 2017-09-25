@@ -1,6 +1,8 @@
 [user]
 	name = Eric Freese
 	email = ericdfreese@gmail.com
+[credential]
+	helper = cache
 [core]
 	editor = "vim"
 	quotepath = false
