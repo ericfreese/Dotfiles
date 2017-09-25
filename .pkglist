@@ -98,5 +98,6 @@ xfsprogs
 xorg-server
 xorg-xbacklight
 xorg-xinit
+xorg-xrandr
 xterm
 zsh
