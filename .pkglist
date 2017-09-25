@@ -70,6 +70,7 @@ psmisc
 pulseaudio-alsa
 redshift
 reiserfsprogs
+rfkill
 rxvt-unicode
 s-nail
 sed
@@ -81,6 +82,7 @@ systemd-sysvcompat
 tar
 texinfo
 tig
+tlp
 tree
 ttf-dejavu
 usbutils
