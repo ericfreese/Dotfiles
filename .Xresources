@@ -1,4 +1,5 @@
-Xft.dpi: 144
+! 96 * 1.375
+Xft.dpi: 132
 
 ! special
 *.foreground:   #e6e1dc
