@@ -31,6 +31,12 @@ set showmatch
 " Turn on line numbers
 set number
 
+" Incremental search
+set incsearch
+
+" Highlight search results
+set hlsearch
+
 " Forced context lines around cursor
 set scrolloff=5
 
