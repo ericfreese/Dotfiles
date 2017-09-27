@@ -13,6 +13,9 @@ set smartindent
 " Turn on mouse support
 set mouse=a
 
+" Use the xorg system clipboard as default register
+set clipboard=unnamedplus
+
 " Turn off swap files
 set noswapfile
 
