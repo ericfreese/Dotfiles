@@ -27,12 +27,12 @@
 # Sound controls
 #
 
-"amixer set Master toggle"
+"amixer set Master toggle && pkill -RTMIN+10 i3blocks"
   XF86AudioMute
 
-"amixer set Master 5%+"
+"amixer set Master 5%+ && pkill -RTMIN+10 i3blocks"
   XF86AudioRaiseVolume
 
-"amixer set Master 5%-"
+"amixer set Master 5%- && pkill -RTMIN+10 i3blocks"
   XF86AudioLowerVolume
 
