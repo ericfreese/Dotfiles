@@ -32,6 +32,7 @@ gettext
 git
 glibc
 grep
+gvim
 gzip
 i3-wm
 i3blocks
@@ -89,7 +90,6 @@ ttf-dejavu
 usbutils
 util-linux
 vi
-vim
 wget
 which
 wpa_actiond
