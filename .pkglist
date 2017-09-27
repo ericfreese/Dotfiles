@@ -90,6 +90,7 @@ usbutils
 util-linux
 vi
 vim
+wget
 which
 wpa_actiond
 wpa_supplicant
