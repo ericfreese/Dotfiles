@@ -32,7 +32,7 @@ Xft.dpi: 132
 
 ! cyan
 *.color6:       #ff8700
-*.color14:      #ff8700
+*.color14:      #4f2a00
 
 ! white
 *.color7:       #e6e1dc

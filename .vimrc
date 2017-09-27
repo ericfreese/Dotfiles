@@ -22,6 +22,7 @@ syntax on
 " Color scheme
 set background=dark
 colorscheme PaperColor
+hi Search cterm=NONE ctermfg=DarkCyan ctermbg=Cyan
 "hi Normal ctermbg=NONE
 "hi NonText ctermbg=NONE
 "hi LineNr ctermbg=NONE
