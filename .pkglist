@@ -52,6 +52,7 @@ linux-headers
 logrotate
 lvm2
 m4
+maim
 make
 man-db
 man-pages
