@@ -10,6 +10,7 @@ bzip2
 chromium
 coreutils
 cryptsetup
+ctags
 device-mapper
 dhcpcd
 dialog
@@ -28,6 +29,7 @@ flex
 gawk
 gcc
 gcc-libs
+gdb
 gettext
 git
 glibc
@@ -83,6 +85,7 @@ sysfsutils
 systemd-sysvcompat
 tar
 texinfo
+the_silver_searcher
 tig
 tlp
 tree
