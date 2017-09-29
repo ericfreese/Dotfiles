@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+local -F dpi=$(xrdb -query | grep Xft.dpi | cut -f2)
+echo $(($dpi / 96))x

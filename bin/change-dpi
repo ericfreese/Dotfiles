@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+local -F base_dpi=96.0
+local -F new_dpi_scale
+
+case $1 in
+  "up")
+    new_dpi_scale=$(($(xrdb -query | grep Xft.dpi | cut -f2) / $base_dpi + 0.125))
+    ;;
+  "down")
+    new_dpi_scale=$(($(xrdb -query | grep Xft.dpi | cut -f2) / $base_dpi - 0.125))
+    ;;
+  "reset")
+    new_dpi_scale=1.5
+    ;;
+  *)
+    echo "Usage: change-dpi [up|down|reset]"
+    exit 1
+esac
+
+echo "Xft.dpi: $(($base_dpi * $new_dpi_scale))" | xrdb -merge
