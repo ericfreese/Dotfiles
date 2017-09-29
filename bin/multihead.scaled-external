@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+xrandr --output eDP1 --mode 2880x1800 --panning 2880x1800 --output DP1 --mode 2560x1440 --scale 1.5x1.5 --panning 3840x2160+2880+0 --right-of eDP1
