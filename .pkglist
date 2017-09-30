@@ -33,6 +33,7 @@ gdb
 gettext
 git
 glibc
+go
 grep
 gvim
 gzip
