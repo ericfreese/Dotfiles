@@ -101,6 +101,7 @@ wpa_supplicant
 xbanish
 xbindkeys
 xclip
+xcwd-git
 xf86-input-synaptics
 xf86-video-intel
 xfsprogs
