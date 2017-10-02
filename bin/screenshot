@@ -3,7 +3,7 @@
 local tmp=$(mktemp)
 local filename="$HOME/screenshots/screenshot-$(date -Is).png"
 
-maim -s > $tmp
+maim -su > $tmp
 
 if [ -s $tmp ]; then
   cat $tmp | tee $filename | xclip -sel clip -t image/png
