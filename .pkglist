@@ -46,6 +46,7 @@ iproute2
 iputils
 jfsutils
 kbdlight
+kubectl-bin
 less
 libtool
 licenses
