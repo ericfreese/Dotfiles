@@ -169,6 +169,9 @@ bindsym $mod+Shift+plus exec "change-dpi up && i3-msg restart"
 bindsym $mod+Shift+minus exec "change-dpi down && i3-msg restart"
 bindsym $mod+Shift+0 exec "change-dpi reset && i3-msg restart"
 
+# Screenshots
+bindsym $mod+Shift+s exec "screenshot"
+
 new_window normal 0
 focus_follows_mouse no
 
