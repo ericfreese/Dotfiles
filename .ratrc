@@ -44,7 +44,7 @@ mode git.refs
   bindkey r      git.ref         -- !git rebase %(git.ref)
   bindkey m      git.ref         -- !git merge %(git.ref)
   bindkey d      git.ref         -- !git branch -d %(git.ref)
-  bindkey delete git.ref         -- ?!git merge %(git.ref)
+  bindkey delete git.ref         -- ?!git branch -D %(git.ref)
 end
 
 mode git.source
@@ -59,9 +59,11 @@ mode git.misc
   bindkey s   git.commit   git.show   -- >git show --stat=400 -p %(git.commit) | diff-highlight
   bindkey v   git.filename git.source -- >cat "%(git.filename)"
   bindkey b   git.filename git.blame  -- >git blame -- "%(git.filename)"
+  bindkey l   git.filename git.log    -- >git llll %(git.filename)
   bindkey l   git.ref      git.log    -- >git llll %(git.ref)
   bindkey S-r git.commit              -- ?!git rebase --interactive %(git.commit)
   bindkey S-f git.commit              -- ?!git commit --fixup=%(git.commit)
+  bindkey S-p git.commit              -- ?!git cherry-pick %(git.commit)
   bindkey a   git.filename            -- !git add %(git.filename)
   bindkey r   git.filename            -- !git reset %(git.filename)
   bindkey d   git.filename git.diff   -- >git dl %(git.filename) | diff-highlight
