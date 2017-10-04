@@ -46,6 +46,7 @@ inetutils
 iproute2
 iputils
 jfsutils
+jq
 kbdlight
 kubectl-bin
 less
