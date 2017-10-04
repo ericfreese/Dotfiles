@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+wpa_cli -i wlp2s0 status | sed -n 's/^ssid=//p'
