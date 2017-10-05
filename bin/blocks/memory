@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+
+local -a stats=(${(@s/ /)$(free | grep "Mem" | tr -s ' ' | cut -d' ' -f2,3)})
+
+local -F total=$stats[1]
+local -F used=$stats[2]
+local -F usage=$(($used / $total * 100))
+
+local color='#a5c261'
+
+[[ $usage > 60 ]] && color="#ff8700"
+
+# Full text
+printf "%d%%\n" $usage
+
+# Short text
+printf "%d%%\n" $usage
+
+# Color
+echo $color
+
+# Urgency
+[[ $usage > 90 ]] && exit 33
+
+exit 0
