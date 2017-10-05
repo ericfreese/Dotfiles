@@ -46,6 +46,9 @@ set hlsearch
 " Forced context lines around cursor
 set scrolloff=5
 
+" Turn on filetype detection, plugins, and indentation
+filetype plugin indent on
+
 " Highlight extra whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
