@@ -1,0 +1,90 @@
+#!/usr/bin/env zsh
+
+setopt bash_rematch
+
+git ensure-repo || exit 1
+
+local remote='origin'
+local rev
+local pull_request
+local file
+local first_line
+local last_line
+
+while [[ $# > 0 ]]; do
+  opt="$1"
+
+  case $opt in
+    --remote)
+      remote=$2
+      shift 2
+      ;;
+    --rev)
+      rev=$2
+      shift 2
+      ;;
+    --pull-request)
+      pull_request=$2
+      shift 2
+      ;;
+    --file)
+      file=$2
+      shift 2
+      ;;
+    --first-line)
+      first_line=$2
+      shift 2
+      ;;
+    --last-line)
+      last_line=$2
+      shift 2
+      ;;
+    *)
+      >&2 echo "Unsupported args"
+      exit 1
+  esac
+done
+
+##
+# Find a web URL for the GitHub repo
+#
+
+local remote_url=$(git config --get remote.$remote.url)
+local repo_url
+remote_url=${remote_url%.git}
+
+if [[ $remote_url =~ "^https?://(.+)$" ]]; then
+  repo_url="https://$BASH_REMATCH[2]"
+elif [[ $remote_url =~ "^ssh://([^@]+@)?([^/]+)/(.+)$" ]]; then
+  repo_url="https://$BASH_REMATCH[3]/$BASH_REMATCH[4]"
+elif [[ $remote_url =~ "^([^@]+@)?([^/:]+):(.+)$" ]]; then
+  repo_url="https://$BASH_REMATCH[3]/$BASH_REMATCH[4]"
+else
+  >&2 echo "Error: unsupported remote format: $remote_url"
+  exit 1
+fi
+
+##
+# Find the right path for the request
+#
+
+local repo_path
+local commit
+
+[[ -n "$rev" ]] && commit=$(git rev-parse $rev 2> /dev/null)
+
+if [[ -n "$file" ]]; then
+  [[ -z "$commit" ]] && commit="$(git rev-parse HEAD)"
+  repo_path="/blob/$commit/$file"
+  [[ -n "$first_line" ]] && repo_path+="#L$first_line" && \
+    [[ -n "$last_line" ]] &&  repo_path+="-L$last_line"
+elif [[ -n "$pull_request" ]]; then
+  repo_path="/pull/$pull_request"
+  [[ -n "$commit" ]] && repo_path+="/commits/$commit"
+elif [[ -n "$commit" ]]; then
+  repo_path="/commit/$commit"
+fi
+
+echo "$repo_url$repo_path"
+
+exit 0
