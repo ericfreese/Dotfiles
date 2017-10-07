@@ -70,6 +70,7 @@ mode git.misc
   bindkey s   git.commit   git.show   -- >git show --stat=400 -p %(git.commit) | diff-highlight
   bindkey v   git.filename git.source -- >cat "%(git.filename)"
   bindkey b   git.filename git.blame  -- >git blame -- "%(git.filename)"
+  bindkey l   git.commit   git.log    -- >git llll %(git.commit)
   bindkey l   git.filename git.log    -- >git llll %(git.filename)
   bindkey l   git.ref      git.log    -- >git llll %(git.ref)
   bindkey S-r git.commit              -- ?!git rebase --interactive %(git.commit)
