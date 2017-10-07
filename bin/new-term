@@ -1,0 +1,43 @@
+#!/usr/bin/env zsh
+
+usage() {
+  cat <<USAGE
+Usage: new-term [--dir <working-dir>] [-- <command> [<arg>...]]
+
+  --dir <working-dir>
+    The working directory for the newly created terminal. Defaults to $HOME.
+
+  <command> [<arg>...]
+    The command to run and any args to pass to it.
+USAGE
+}
+
+local dir="$HOME"
+local command
+while [[ $#* > 0 ]]; do
+  opt=$1
+
+  case $opt in
+    --dir)
+      dir=$2
+      shift 2
+      ;;
+    --)
+      shift
+      command=$@
+      shift $#
+      ;;
+    --help|*)
+      usage
+      exit 1
+      ;;
+  esac
+done
+
+local commandargs
+local dirargs
+
+[[ -n "$command" ]] && commandargs="-e $command"
+[[ -n "$dir" ]] && dirargs="-cd $dir"
+
+urxvt $=dirargs $=commandargs
