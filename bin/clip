@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+local notify
+
+while [[ $# > 0 ]]; do
+  opt="$1"
+
+  case $opt in
+    --notify)
+      notify=1
+      shift
+      ;;
+    *)
+      >&2 echo "Usage: clip [--notify]"
+      exit 1
+      ;;
+  esac
+done
+
+xclip -sel clip || exit 1
+
+[[ -n "$notify" ]] && notify-send "Copied '$(xclip -o -sel clip)'"

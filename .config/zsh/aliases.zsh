@@ -13,5 +13,3 @@ alias brdc='be rake db:create'
 alias brdm='be rake db:migrate'
 alias brt='be rake test'
 alias bfs='be foreman start'
-
-alias clip='xclip -sel clip'
