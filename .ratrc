@@ -19,6 +19,7 @@ mode git.show
   bindkey b     git.filename git.blame  -- >git blame %(git.commit) -- "%(git.filename)"
   bindkey l     git.filename git.log    -- >git llll --follow %(git.commit) -- "%(git.filename)"
   bindkey v     git.filename git.source -- >git show %(git.commit):"%(git.filename)"
+  bindkey e     git.filename            -- !vim %(git.filename)
   bindkey S-o                           -- !xdg-open $(git hub-url --rev %(git.commit))
   bindkey S-u                           -- !xdg-open $(git hub-url --pull-request $(git pulls-for %(git.commit) | head -1 | sed -e 's/[^/]*\///g'))
 end
@@ -29,6 +30,7 @@ mode git.blame
   bindkey enter git.commit git.show  -- >git show --stat=400 -p %(git.commit) | diff-highlight
   bindkey b     git.commit git.blame -- >git blame %(git.commit) -- "%(git.filename)"
   bindkey S-b   git.commit git.blame -- >git blame %(git.commit)~ -- "%(git.filename)"
+  bindkey e     git.filename         -- !vim %(git.filename)
   bindkey S-o   git.commit           -- !xdg-open $(git hub-url --rev %(git.commit))
   bindkey S-u   git.commit           -- !xdg-open $(git hub-url --pull-request $(git pulls-for %(git.commit) | head -1 | sed -e 's/[^/]*\///g'))
 end
@@ -38,6 +40,7 @@ mode git.diff
 
   bindkey b git.filename git.blame -- >git blame %(git.commit) -- "%(git.filename)"
   bindkey l git.filename git.log   -- >git llll %(git.commit) -- "%(git.filename)"
+  bindkey e git.filename           -- !vim %(git.filename)
   bindkey S-o                      -- !xdg-open $(git hub-url --rev %(git.commit))
   bindkey S-u                      -- !xdg-open $(git hub-url --pull-request $(git pulls-for %(git.commit) | head -1 | sed -e 's/[^/]*\///g'))
 end
@@ -77,6 +80,7 @@ mode git.misc
   bindkey d   git.filename git.diff   -- >git dl %(git.filename) | diff-highlight
   bindkey c   git.filename git.diff   -- >git dl --cached %(git.filename) | diff-highlight
   bindkey o   git.filename            -- ?!git co %(git.filename)
+  bindkey e   git.filename            -- !vim %(git.filename)
   bindkey S-c                         -- ?!git commit
   bindkey S-a                         -- ?!git commit --amend
   bindkey S-o git.commit              -- !xdg-open $(git hub-url --rev %(git.commit))
