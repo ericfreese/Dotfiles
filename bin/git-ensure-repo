@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+git rev-parse 2> /dev/null || {
+  >&2 echo "Not a git repo"
+  exit 1
+}
+
