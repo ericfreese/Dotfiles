@@ -1,0 +1,43 @@
+#!/usr/bin/env zsh
+
+git ensure-repo || exit 1
+
+local remote=origin
+local format='%(refname:short)'
+local commit
+
+while [[ $# > 0 ]]; do
+  opt="$1"
+
+  case $opt in
+    --remote)
+      remote=$2
+      shift
+      shift
+      ;;
+    --format)
+      format=$2
+      shift
+      shift
+      ;;
+    *)
+      commit=$opt
+      shift
+      ;;
+  esac
+done
+
+if [[ -z "$commit" ]]; then
+  >&2 echo "usage: git pulls-for <commit> [--remote <remote>]"
+  exit 1
+fi
+
+git for-each-ref \
+  refs/remotes/$remote/pull \
+  --contains $commit \
+  --sort=committerdate \
+  --no-contains master \
+  --format="$format"
+
+exit 0
+
