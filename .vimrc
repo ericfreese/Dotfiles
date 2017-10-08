@@ -100,3 +100,64 @@ let g:go_fmt_command = "goimports"
 " Highlight other occurences of word under cursor
 autocmd CursorMoved * exe printf('match MatchParen /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
+" External commands
+function! GitHubOpen()
+  call system("xdg-open $(git hub-url --file \"". @% . "\") &")
+endfunction
+
+function! GitHubOpenLines() range
+  call system("xdg-open $(git hub-url --file \"". @% . "\" --first-line " . a:firstline . " --last-line " . a:lastline . ") &")
+endfunction
+
+function! GitHubCopyUrl()
+  call system("git hub-url --file \"". @% . "\" | clip --notify &")
+endfunction
+
+function! GitHubCopyUrlLines() range
+  call system("git hub-url --file \"". @% . "\" --first-line " . a:firstline . " --last-line " . a:lastline . " | clip --notify &")
+endfunction
+
+function! GitLog()
+  call system("new-term --dir $(xcwd) -- git rat llll --follow -- " . @% . " &")
+endfunction
+
+function! GitLogLines() range
+  call system("new-term --dir $(xcwd) -- 'git rat llll -L" . a:firstline . "," . a:lastline . ":" . @% . " | diff-highlight' &")
+endfunction
+
+function! GitBlame()
+  call system("new-term --dir $(xcwd) -- git rat blame -- " . @% . " &")
+endfunction
+
+function! GitBlameLines() range
+  call system("new-term --dir $(xcwd) -- git rat blame -L" . a:firstline . "," . a:lastline . " -- " . @% . " &")
+endfunction
+
+function! GitDiff() range
+  call system("new-term --dir $(xcwd) -- git rat dl '" . @% . "' &")
+endfunction
+
+function! SearchSelection()
+  call system("new-term --dir $(xcwd) -- search " . getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]] . " & ")
+endfunction
+
+function! GitLogPickaxe() range
+  call system("new-term --dir $(xcwd) -- git rat llll -S \\'" . getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]] . "\\' &")
+endfunction
+
+nnoremap <leader>gO :call GitHubOpen()<CR>
+vnoremap <leader>gO :call GitHubOpenLines()<CR>
+
+nnoremap <leader>gY :call GitHubCopyUrl()<CR>
+vnoremap <leader>gY :call GitHubCopyUrlLines()<CR>
+
+nnoremap <leader>gL :call GitLog()<CR>
+vnoremap <leader>gL :call GitLogLines()<CR>
+
+nnoremap <leader>gB :call GitBlame()<CR>
+vnoremap <leader>gB :call GitBlameLines()<CR>
+
+nnoremap <leader>gD :call GitDiff()<CR>
+
+vnoremap <leader>ss :call SearchSelection()<CR>
+vnoremap <leader>gS :call GitLogPickaxe()<CR>
