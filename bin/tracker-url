@@ -1,0 +1,34 @@
+#!/usr/bin/env zsh
+
+if [[ ! -f .trackerproject ]]; then
+  >&2 echo "No .trackerproject file found"
+  exit 1
+fi
+
+local story
+
+while [[ $# > 0 ]]; do
+  opt="$1"
+
+  case $opt in
+    *)
+      if [[ -z "$story" ]]; then
+        story="$opt"
+        shift
+      else
+        >&2 echo "Unsupported args"
+        exit 1
+      fi
+  esac
+done
+
+local tracker_url="https://www.pivotaltracker.com/n/projects/$(tr -d '\n' < .trackerproject)"
+local tracker_path
+
+if [[ -n "$story" ]]; then
+  tracker_path="/stories/$story"
+fi
+
+echo "$tracker_url$tracker_path"
+
+exit 0
