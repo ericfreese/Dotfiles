@@ -98,9 +98,8 @@ bindkey C-l git.log  -- git llll --reflog --branches --remotes
 #
 
 mode search.results
-  #annotate match search.filename   -- find -type f | sed -e 's/^.\///'
-  annotate regex search.filename 1 -- (?m)([^\n]+)\n([^\n]+\n)*
-  annotate regex search.linenumber -- ([0-9]+)
+  annotate external git.filename -- regex '([^\n]+)\n([^\n]+\n)*' --value-match 1
+  annotate external search.linenumber -- regex '[0-9]+'
 
   bindkey enter search.filename -- !vim +%(search.linenumber) %(search.filename) -c 'normal! zz'
   bindkey S-e search.filename -- !i3-sensible-terminal -e 'vim %(search.filename)' &
