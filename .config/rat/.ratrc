@@ -14,6 +14,7 @@ end
 
 mode git.show
   annotate match git.filename -- git ls-tree --name-only -r %(git.commit)
+  annotate external tracker.story -- regex '#([0-9]+)' --value-match 1
 
   bindkey enter git.filename git.diff   -- >git log -p --follow -1 %(git.commit) -- "%(git.filename)" | diff-highlight
   bindkey b     git.filename git.blame  -- >git blame %(git.commit) -- "%(git.filename)"
@@ -22,6 +23,7 @@ mode git.show
   bindkey e     git.filename            -- !vim %(git.filename)
   bindkey S-o                           -- !xdg-open $(git hub-url --rev %(git.commit))
   bindkey S-u                           -- !xdg-open $(git hub-url --pull-request $(git pulls-for %(git.commit) | head -1 | sed -e 's/[^/]*\///g'))
+  bindkey S-t   tracker.story           -- !xdg-open $(tracker-url %(tracker.story))
 end
 
 mode git.blame
