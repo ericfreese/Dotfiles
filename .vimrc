@@ -133,7 +133,7 @@ function! GitBlameLines() range
 endfunction
 
 function! GitDiff() range
-  call system("new-term --dir $(xcwd) -- git rat dl '" . @% . "' &")
+  call system("new-term --dir $(xcwd) -- 'git rat dl " . @% . " | diff-highlight' &")
 endfunction
 
 function! SearchSelection()
