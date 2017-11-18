@@ -166,13 +166,15 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Git commands
-mode "gitcmd" {
+mode "new-window" {
         bindsym s exec "new-term --dir $(xcwd) -- tig status"; mode "default"
         bindsym l exec "new-term --dir $(xcwd) -- git rat llll"; mode "default"
+        bindsym o exec "xdg-open $(git --git-dir $(xcwd)/.git hub-url)"; mode "default"
+        bindsym v exec "new-term --dir $(xcwd) -- vim"; mode "default"
         bindsym Escape mode "default"
 }
 
-bindsym $mod+g mode "gitcmd"
+bindsym $mod+g mode "new-window"
 
 # DPI resizing
 bindsym $mod+Shift+plus exec "change-dpi up && i3-msg restart"
