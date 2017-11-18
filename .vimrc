@@ -33,9 +33,8 @@ hi Search cterm=NONE ctermfg=DarkCyan ctermbg=Cyan
 " Show matching brackets
 set showmatch
 
-" Turn on relative line numbers
+" Turn on line numbers
 set number
-set relativenumber
 
 " Incremental search
 set incsearch
