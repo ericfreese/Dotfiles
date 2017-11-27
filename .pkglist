@@ -3,6 +3,7 @@ alsa-utils
 autoconf
 automake
 bash
+bcwc-pcie-git
 binutils
 bison
 broadcom-wl
@@ -22,6 +23,7 @@ docker-compose
 dunst
 e2fsprogs
 etckeeper
+facetimehd-firmware
 fakeroot
 file
 filesystem
