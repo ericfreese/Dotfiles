@@ -1,5 +1,0 @@
-set hintchars=abcdefghijklmnopqrstuvwxyz
-set popups=window
-
-" Restore default select all keybinding
-inoremap <C-a> <C-Home><C-S-End>
