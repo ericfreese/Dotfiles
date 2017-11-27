@@ -36,7 +36,6 @@ gettext
 git
 glibc
 go
-google-cloud-sdk
 grep
 gtk3-print-backends
 gvim
@@ -48,9 +47,7 @@ inetutils
 iproute2
 iputils
 jfsutils
-jq
 kbdlight
-kubectl-bin
 less
 libtool
 licenses
