@@ -11,6 +11,7 @@ chromium
 coreutils
 cryptsetup
 ctags
+cups
 device-mapper
 dhcpcd
 dialog
@@ -37,6 +38,7 @@ glibc
 go
 google-cloud-sdk
 grep
+gtk3-print-backends
 gvim
 gzip
 i3-wm
@@ -67,6 +69,7 @@ nano
 netctl
 noto-fonts
 noto-fonts-emoji
+nss-mdns
 nvm
 openssh
 pacman
