@@ -1,0 +1,11 @@
+mode search.results
+  annotate external git_filename -- regex '([^\n]+)\n([^\n]+\n)*' --value-match 1
+  annotate external search_linenumber -- regex '(?m)^[0-9]+'
+
+  bindkey enter git_filename -- !vim $git_filename
+  bindkey enter search_linenumber,git_filename -- !vim +$search_linenumber $git_filename -c 'normal! zz'
+  #bindkey enter git_filename git.log       -- >echo "$search_linenumber) $git_filename"
+  bindkey S-e   git_filename         -- !i3-sensible-terminal -e 'vim $git_filename' &
+  bindkey l     git_filename git.log -- >git llll -L$(($search_linenumber > 5 ? $(($search_linenumber - 4)) : 1)),$(($(($search_linenumber + 4)) > $(cat $git_filename | wc -l) ? $(cat $git_filename | wc -l) : $(($search_linenumber + 4)))):$git_filename | diff-highlight
+end
+

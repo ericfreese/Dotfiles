@@ -1,0 +1,106 @@
+mode git.status
+  reload -- inotifywait -rqm -e modify -e attrib -e move -e move_self -e create -e delete --exclude .git/index.lock ./
+
+  annotate match git_filename -- git ls-files --cached --modified --others --exclude-standard
+
+  bindkey a git_filename -- !git add $git_filename
+  bindkey r git_filename -- !git reset $git_filename
+
+  bindkey c,o git_filename -- ?!git checkout $git_filename
+  bindkey S-d git_filename -- ?!rm $git_filename
+
+  bindkey d,d git_filename git.diff,git.stage -- >git dl $git_filename | diff-highlight
+  bindkey d,a git_filename git.diff,git.unstage -- >git dl --cached $git_filename | diff-highlight
+  bindkey v git_filename git.source -- >cat "$git_filename"
+  bindkey e git_filename -- !vim $git_filename
+
+  bindkey S-c -- ?!git commit
+  bindkey S-a -- ?!git commit --amend
+
+  #bindkey C-x,C-x git_filename git.commits -- >zsh -it
+end
+
+mode git.diff
+  annotate external hunk_patch -- annotate-diff --mode hunks
+  annotate external line_patch -- annotate-diff --mode lines
+
+  #bindkey h     hunk_patch git.diff -- >echo -nE $hunk_patch"
+  #bindkey l     line_patch git.diff -- >echo -nE $line_patch
+  #bindkey e     line_patch git.diff -- >env
+  # bindkey b git.filename git.blame -- >git blame %(git.commit) -- "%(git.filename)"
+  # bindkey l git.filename git.commits   -- >git llll %(git.commit) -- "%(git.filename)"
+end
+
+mode git.stage
+  reload -- inotifywait -qm -e modify -e attrib -e move -e move_self -e create -e delete $(dirname $git_filename)
+
+  bindkey S-a -- !git add $git_filename
+  bindkey a hunk_patch -- !echo -nE "$hunk_patch" | git apply --cached --unidiff-zero -
+  bindkey 1 line_patch -- !echo -nE "$line_patch" | git apply --cached --unidiff-zero -
+  bindkey e -- !vim $git_filename
+end
+
+mode git.unstage
+  bindkey S-r -- !git reset $git_filename
+  bindkey r hunk_patch -- !echo -nE "$hunk_patch" | git apply --cached --unidiff-zero --reverse -
+  bindkey 1 line_patch -- !echo -nE "$line_patch" | git apply --cached --unidiff-zero --reverse -
+end
+
+mode git.commits
+  reload -- inotifywait -rqm -e modify -e attrib -e move -e move_self -e create -e delete --exclude .git/index.lock ./.git
+
+  annotate match git_commit -- git rev-list --all --reflog --abbrev=7 --abbrev-commit
+
+  bindkey s git_commit git.show -- >git show --stat=400 -p $git_commit | diff-highlight
+  bindkey l git_commit git.commits -- >git llll $git_commit
+
+  bindkey r,b git_commit -- ?!git rebase --interactive $git_commit
+  bindkey f,u git_commit -- ?!git commit --fixup=$git_commit
+  bindkey c,p git_commit -- ?!git cherry-pick $git_commit
+  bindkey r,v git_commit -- ?!git revert $git_commit
+  bindkey c,o git_commit -- ?!git co $git_commit
+
+  bindkey S-o git_commit -- !xdg-open $(git hub-url --rev $git_commit)
+  bindkey S-u git_commit -- !xdg-open $(git hub-url --pull-request $(git pulls-for $git_commit | head -1 | sed -e 's/[^/]*\///g'))
+end
+
+bindkey S-i env -- env
+
+mode git.show
+  annotate match git_filename -- git ls-tree --name-only -r $git_commit
+  annotate external number -- regex '#([0-9]+)' --value-match 1
+
+  bindkey d git_filename git.diff -- >git log -p --follow -1 $git_commit -- "$git_filename" | diff-highlight
+  bindkey l git_filename git.commits -- >git llll --follow $git_commit -- "$git_filename"
+  bindkey v git_filename git.source -- >git show $git_commit:"$git_filename"
+  bindkey e git_filename -- !vim $git_filename
+  bindkey c,o git_commit -- ?!git co $git_commit
+end
+
+mode git.refs
+  annotate match git_ref -- git for-each-ref --format='%(refname)%0a%(refname:short)'
+
+  #bindkey c,m git_ref git.commits -- >git llll HEAD...$git_ref
+  bindkey l git_ref git.commits -- >git llll $git_ref
+  bindkey c,o git_ref -- ?!git co $git_ref
+  bindkey d,d git_ref -- ?!git b -d $git_ref
+  bindkey d,S-d git_ref -- ?!git b -D $git_ref
+end
+
+mode git.misc
+  #annotate match git_commit   -- git rev-list --all --reflog --abbrev=7 --abbrev-commit
+  #annotate match git_filename -- git ls-files --cached --modified --others --exclude-standard
+  #annotate match git_ref      -- git for-each-ref --format='%(refname)%0a%(refname:short)'
+  #annotate external git_pull   -- origin/pull/([0-9]+) --value-match 1
+
+  #bindkey b     git_filename git.blame  -- >git blame -- "$git_filename"
+  #bindkey l     git_commit   git.commits    -- >git llll $git_commit
+  #bindkey l     git_filename git.commits    -- >git llll $git_filename
+  #bindkey c,o   git_commit              -- ?!git co $git_commit
+
+  bindkey S-r,c -- ?!git rebase --continue
+  bindkey S-r,a -- ?!git rebase --abort
+
+  bindkey C-x,C-x git_commit git.status,git.commits,git.refs,git.misc -- echo -E "$(new-term --dir $(xcwd) -- zsh-prompt 3>&1)"
+end
+
