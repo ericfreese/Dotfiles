@@ -1,2 +1,18 @@
 #!/usr/bin/env zsh
-rat --cmd "git $*" --mode git.misc
+
+local mode="git.misc"
+
+case $1 in
+  l|ll|lll|llll|log)
+    mode="git.commits,git.refs"
+    ;;
+  s|status)
+    mode="git.status"
+    ;;
+  b|branch)
+    mode="git.refs"
+    ;;
+esac
+
+rat --cmd "git $*" --mode "$mode"
+#rat --cmd "git $*" --mode 'git.status,git.commits,git.refs,git.misc'
