@@ -58,6 +58,7 @@ mode git.commits
   bindkey f,u git_commit -- ?!git commit --fixup=$git_commit
   bindkey c,p git_commit -- ?!git cherry-pick $git_commit
   bindkey r,v git_commit -- ?!git revert $git_commit
+  bindkey r,h,h git_commit -- ?!git reset --hard $git_commit
   bindkey c,o git_commit -- ?!git co $git_commit
 
   bindkey S-o git_commit -- !xdg-open $(git hub-url --rev $git_commit)
