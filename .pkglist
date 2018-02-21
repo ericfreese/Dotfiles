@@ -37,6 +37,7 @@ gdb
 gettext
 git
 glibc
+glide
 go
 grep
 gtk3-print-backends
