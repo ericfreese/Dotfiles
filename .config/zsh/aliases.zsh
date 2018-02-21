@@ -1,5 +1,5 @@
 alias ll='ls -al'
-alias tigs='tig status'
+alias tigs='git rat status'
 
 alias t='tree -L 1'
 alias tt='tree -L 2'
